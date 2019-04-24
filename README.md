@@ -1,0 +1,1 @@
+A django starter project to test a custom user model extending Django's User model.
