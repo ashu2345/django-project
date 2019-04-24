@@ -10,7 +10,7 @@
                 <a href = "{% url 'users:addFood' 'Roll' %}" class = "list-group-item list-group-item-action rounded-pill shadow p-2 mb-4 bg-primary">Roll</a>
             </div>
         </div>
-        <p class="container"><a href="{% url 'logout' %}" class = "btn btn-danger">logout</a></p>
+        <p class="container"><a href="{% url 'logout' %}" class = "btn btn-danger">Logout</a> | <a href = "{% url 'users:displayFood' %}" class = "btn btn-success">Your orders</a></p>
     {% else %}
         <p>You are not logged in</p>
         <a href="{% url 'login' %}">Login</a> | <a href="{% url 'users:signup' %}">Signup</a>

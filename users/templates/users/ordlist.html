@@ -3,10 +3,12 @@
 {% block content %}
     <h3>You bought:</h3>
     <br />
-    <table>
+    <table class = "table table-dark">
         <thead>
-            <td>Item Name</td>
-            <td>Ordered At</td>
+            <tr>
+                <th>Item Name</th>
+                <th>Ordered At</th>
+            </tr>
         </thead>
     {% for item in customer.orders_set.all %}
         <tr>
@@ -15,5 +17,5 @@
         </tr>
     {% endfor %}
     </table>
-    <a href = "{% url 'home' %}">Return to homepage</a>
+    <p>Want to order something else? Click <a href = "{% url 'home' %}">here</a></p>
 {% endblock %}
