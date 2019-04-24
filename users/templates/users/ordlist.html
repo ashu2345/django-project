@@ -3,10 +3,17 @@
 {% block content %}
     <h3>You bought:</h3>
     <br />
-    <ul>
+    <table>
+        <thead>
+            <td>Item Name</td>
+            <td>Ordered At</td>
+        </thead>
     {% for item in customer.orders_set.all %}
-        <li>{{ item.item_name }}</li>
+        <tr>
+            <td>{{ item.item_name }}</td>
+            <td>{{ item.order_time }}</td>
+        </tr>
     {% endfor %}
-    </ul>
+    </table>
     <a href = "{% url 'home' %}">Return to homepage</a>
 {% endblock %}
