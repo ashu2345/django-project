@@ -1,0 +1,7 @@
+{% extends 'users/base.html' %}
+{% block title %} Successfully Added {% endblock %}
+{% block content %}
+    <h3>{{ food }} successfully added</h3>
+    <p>Want to order anything else? Go <a href="{% url 'home' %}">here</a></p>
+    <p><a href = "{% url 'users:displayFood' %}">Your orders</a></p>
+{% endblock %}

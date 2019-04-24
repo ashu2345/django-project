@@ -1,0 +1,12 @@
+{% extends 'users/base.html' %}
+{% block title %} Your orders {% endblock %}
+{% block content %}
+    <h3>You bought:</h3>
+    <br />
+    <ul>
+    {% for item in customer.orders_set.all %}
+        <li>{{ item.item_name }}</li>
+    {% endfor %}
+    </ul>
+    <a href = "{% url 'home' %}">Return to homepage</a>
+{% endblock %}
