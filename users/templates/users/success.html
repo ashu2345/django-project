@@ -1,7 +1,6 @@
 {% extends 'users/base.html' %}
-{% block title %} Successfully Added {% endblock %}
+{% block title %} Confirmation {% endblock %}
 {% block content %}
-    <h3>{{ food }} successfully added</h3>
-    <p>Want to order anything else? Go <a href="{% url 'home' %}" class = "btn btn-link">here</a></p>
-    <p><a href = "{% url 'users:displayFood' %}" class = "btn btn-success">Your orders</a></p>
+    <h3> Hurray {{ customer.username }}! You ordered &#8377 {{ totalprice }} worth of items</h3>
+    <p> You can go back to <a href = "{% url 'home' %}">homepage</a> to order more items</p>
 {% endblock %}

@@ -2,17 +2,17 @@
 {% block title %} Home {% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <h3>Hi {{ user.username }}! What would you like to order today?<h3><br />
-        <div class = "container" style = "width: 50%">
-            <div class = "list-group list-group-flush rouneded">
-                <a href = "{% url 'users:addFood' 'Pizza' %}" class = "list-group-item list-group-item-action rounded-pill shadow p-2 mb-4 bg-primary">Pizza</a>
-                <a href = "{% url 'users:addFood' 'Burger' %}" class = "list-group-item list-group-item-action rounded-pill shadow p-2 mb-4 bg-primary">Burger</a>
-                <a href = "{% url 'users:addFood' 'Roll' %}" class = "list-group-item list-group-item-action rounded-pill shadow p-2 mb-4 bg-primary">Roll</a>
-            </div>
-        </div>
-        <p class="container"><a href="{% url 'logout' %}" class = "btn btn-danger">Logout</a> | <a href = "{% url 'users:displayFood' %}" class = "btn btn-success">Your orders</a></p>
+        <h3>Hi {{ user.username }}! What would you like to order today?</h3><br />
+        {% for item in items %}
+            <a href = "{% url 'users:addFood' item.pk %}" class = "btn btn-danger rounded-pill" style = "margin: 10px 10px;">{{ item.name }}</a><br />
+        {% endfor %}
+        <footer class="page-footer align-items-center">
+            <a href="{% url 'logout' %}" class = "btn btn-danger">Logout</a> | 
+            <a href = "{% url 'users:displayFood' %}" class = "btn btn-success">Your orders</a> |
+            <a href = "{% url 'users:cart' %}" class = "btn btn-success">Your cart</a>
+        </footer>
     {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'users:signup' %}">Signup</a>
+        <h3 style = "padding-bottom: 25px;">Welcome to foodies!</h3>
+        <a href="{% url 'login' %}" class = "btn btn-success">Login</a> | <a href="{% url 'users:signup' %}" class = "btn btn-info">Signup</a>
     {% endif %}
 {% endblock %}

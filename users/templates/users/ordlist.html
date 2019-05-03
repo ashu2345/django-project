@@ -1,21 +1,29 @@
 {% extends 'users/base.html' %}
 {% block title %} Your orders {% endblock %}
 {% block content %}
-    <h3>You bought:</h3>
-    <br />
-    <table class = "table table-dark">
-        <thead>
+    {% if customer.orders_set.all %}
+        <h3>You bought:</h3>
+        <br />
+        <table class = "table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Ordered At</th>
+                </tr>
+            </thead>
+        {% for item in customer.orders_set.all %}
             <tr>
-                <th>Item Name</th>
-                <th>Ordered At</th>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.type_of_food }}</td>
+                <td>{{ item.order_time }}</td>
             </tr>
-        </thead>
-    {% for item in customer.orders_set.all %}
-        <tr>
-            <td>{{ item.item_name }}</td>
-            <td>{{ item.order_time }}</td>
-        </tr>
-    {% endfor %}
-    </table>
-    <p>Want to order something else? Click <a href = "{% url 'home' %}">here</a></p>
+        {% endfor %}
+        </table>
+        <p>Want to order something else? Click <a href = "{% url 'home' %}">here</a></p><br />
+    {% else %}
+        <h3>Your order list is empty! Order <a href = "{% url 'home' %}">here</a></h3>
+    {% endif %}
 {% endblock %}

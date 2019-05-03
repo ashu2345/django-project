@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+{% block title %}Payment information{% endblock %}
+{% block content %}
+    {% if error %}
+        {% block error %}
+        <div class = "alert alert-danger" role = "alert">
+            Credentials didn't match with our database. Please enter correct information!
+        </div>
+        {% endblock %}
+    {% endif %}
+    <form action = "{% url 'users:paymentPortal' %}" method = "POST" class = "form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type = "submit" value = "Submit" class = "btn btn-primary" /> | 
+        <a href = "{% url 'users:cart' %}" class = "btn btn-secondary">Go Back</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'users/base.html' %}
+{% block title %}Order history wiped{% endblock %}
+{% block content %}
+    <h1 class = "display-4">Item {{ item_name }} has been deleted from your cart</h1>
+    Return to <a href = "{% url 'home' %}" class = "btn btn-success">Home</a>
+{% endblock %}

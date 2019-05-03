@@ -9,7 +9,15 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
+class Item(models.Model):
+    name = models.CharField(max_length = 100, null = True)
+    descr = models.CharField(max_length = 200, null = True)
+    price = models.FloatField(default = 0)
+
 class Orders(models.Model):
     customer = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
-    item_name = models.CharField(max_length = 40)
-    order_time = models.DateField(default = timezone.now)
+    item = models.ForeignKey(Item, on_delete = models.CASCADE, related_name = "conf_item", null = True)
+
+class CartOrders(models.Model):
+    customer = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
+    item = models.ForeignKey(Item, on_delete = models.CASCADE, related_name = "cart_item", null = True)

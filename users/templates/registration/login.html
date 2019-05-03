@@ -2,11 +2,11 @@
 {% block title %} Login Form {% endblock %}
 {% block content %}
     <h2>Login</h2>
-    <form method="post">
+    <form method="post" class = "form-group">
         <div class="form-group">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Login</button>
+            <button type="submit" class = "btn btn-success">Login</button>
         </div>
     </form>
 {% endblock %}

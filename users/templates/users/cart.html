@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+{% block title %} Your cart {% endblock %}
+{% block content %}
+    {% if cartorders %}
+        <h1>Your cart</h1>
+        <table class = "table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cartitem in cartorders %}
+                    <tr>
+                        <td>{{ cartitem.item.name }}</td>
+                        <td>{{ cartitem.item.descr }}</td>
+                        <td>{{ cartitem.item.price }}</td>
+                        <td><a href = "{% url 'users:deleteCartOrder' cartitem.pk %}" class = "btn btn-danger">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        Move to <a href = "{% url 'users:paymentPortal' %}" class = "btn btn-success">payment portal</a> | <a href = "{% url 'home' %}">Order more</a>
+    {% else %}
+        <h3>Your cart is empty! Click <a href = "{% url 'home' %}">here</a> to add items to your cart</h3>
+    {% endif %}
+{% endblock %}
